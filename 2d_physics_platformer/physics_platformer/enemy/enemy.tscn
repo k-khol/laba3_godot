@@ -145,8 +145,8 @@ colors = PackedColorArray(1, 1, 1, 0.501961, 0, 0, 0, 0)
 [node name="Enemy" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_eyxlk")
 lock_rotation = true
-max_contacts_reported = 4
 contact_monitor = true
+max_contacts_reported = 4
 script = ExtResource("1_hjwkx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
