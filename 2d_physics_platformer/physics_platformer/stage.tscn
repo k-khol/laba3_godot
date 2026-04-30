@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b53muvlsw1tx3"]
+[gd_scene load_steps=29 format=3 uid="uid://b53muvlsw1tx3"]
 
 [ext_resource type="TileSet" uid="uid://rowrak7ls50v" path="res://tileset.tres" id="1"]
 [ext_resource type="PackedScene" uid="uid://6uilf6rad880" path="res://coin/coin.tscn" id="2"]
@@ -6,9 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://rxbjx7rhfd8k" path="res://background/seesaw.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://dkmxopg1dknq8" path="res://platform/one_way_platform.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://bbxsp4gp554vh" path="res://player/player.tscn" id="6_fauva"]
+[ext_resource type="Texture2D" uid="uid://c1d1kx8ifgkbp" path="res://background/S-250.1.8.jpg" id="6_wlxh4"]
 [ext_resource type="PackedScene" uid="uid://daqqtote00syu" path="res://enemy/enemy.tscn" id="7"]
 [ext_resource type="PackedScene" uid="uid://csdn3dwkaprow" path="res://background/parallax_bg.tscn" id="8"]
 [ext_resource type="AudioStream" uid="uid://gunv00cij80t" path="res://audio/music.ogg" id="9"]
+[ext_resource type="Script" path="res://scripts/JuniorMasterpiece.gd" id="10_y8le4"]
+[ext_resource type="Texture2D" uid="uid://ccq6t6ngu10tn" path="res://background/photo_2026-04-30_04-48-51.jpg" id="12_nu3d5"]
+[ext_resource type="Texture2D" uid="uid://dykiknf7km7u4" path="res://player/osb_right.png" id="13_b0xa5"]
+[ext_resource type="Texture2D" uid="uid://c7ymjckh78mib" path="res://player/osb_jump.png" id="14_rmrue"]
 
 [sub_resource type="Animation" id="Animation_oxal6"]
 length = 0.001
@@ -127,9 +132,10 @@ friction = 0.0
 [sub_resource type="PhysicsMaterial" id="12"]
 friction = 0.0
 
-[node name="Stage" type="Node2D"]
+[node name="Stage" type="Node2D" groups=["atmosphere"]]
 
 [node name="TileMap" type="TileMap" parent="."]
+modulate = Color(0.626143, 0.667423, 0.794593, 1)
 position = Vector2(2, 0)
 tile_set = ExtResource("1")
 rendering_quadrant_size = 4
@@ -247,22 +253,139 @@ position = Vector2(1710.71, 200.644)
 position = Vector2(1678.71, 200.644)
 
 [node name="Coin37" parent="Coins" instance=ExtResource("2")]
-position = Vector2(2086.38, 302.529)
+position = Vector2(2100, 292)
 
 [node name="Coin38" parent="Coins" instance=ExtResource("2")]
-position = Vector2(2118.38, 302.529)
+position = Vector2(2110, 292)
 
 [node name="Coin39" parent="Coins" instance=ExtResource("2")]
-position = Vector2(2150.38, 302.529)
+position = Vector2(2110, 302)
 
 [node name="Coin40" parent="Coins" instance=ExtResource("2")]
-position = Vector2(2150.38, 270.529)
+position = Vector2(2110, 282)
 
 [node name="Coin41" parent="Coins" instance=ExtResource("2")]
-position = Vector2(2118.38, 270.529)
+position = Vector2(2091, 292)
 
 [node name="Coin42" parent="Coins" instance=ExtResource("2")]
-position = Vector2(2086.38, 270.529)
+position = Vector2(2091, 282)
+
+[node name="Coin43" parent="Coins" instance=ExtResource("2")]
+position = Vector2(2110, 312)
+
+[node name="Coin44" parent="Coins" instance=ExtResource("2")]
+position = Vector2(2110, 272)
+
+[node name="Coin45" parent="Coins" instance=ExtResource("2")]
+position = Vector2(2091, 272)
+
+[node name="Coin46" parent="Coins" instance=ExtResource("2")]
+position = Vector2(360, 439)
+
+[node name="Coin47" parent="Coins" instance=ExtResource("2")]
+position = Vector2(360, 471)
+
+[node name="Coin48" parent="Coins" instance=ExtResource("2")]
+position = Vector2(370, 449)
+
+[node name="Coin49" parent="Coins" instance=ExtResource("2")]
+position = Vector2(350, 449)
+
+[node name="Coin50" parent="Coins" instance=ExtResource("2")]
+position = Vector2(360, 460)
+
+[node name="Coin51" parent="Coins" instance=ExtResource("2")]
+position = Vector2(360, 449)
+
+[node name="Coin52" parent="Coins" instance=ExtResource("2")]
+position = Vector2(1083, 666)
+
+[node name="Coin53" parent="Coins" instance=ExtResource("2")]
+position = Vector2(1073, 666)
+
+[node name="Coin54" parent="Coins" instance=ExtResource("2")]
+position = Vector2(1073, 644)
+
+[node name="Coin55" parent="Coins" instance=ExtResource("2")]
+position = Vector2(1063, 666)
+
+[node name="Coin56" parent="Coins" instance=ExtResource("2")]
+position = Vector2(1083, 655)
+
+[node name="Coin57" parent="Coins" instance=ExtResource("2")]
+position = Vector2(1083, 644)
+
+[node name="Coin58" parent="Coins" instance=ExtResource("2")]
+position = Vector2(1063, 644)
+
+[node name="Coin59" parent="Coins" instance=ExtResource("2")]
+position = Vector2(1063, 655)
+
+[node name="Coin60" parent="Coins" instance=ExtResource("2")]
+position = Vector2(1122, 654)
+
+[node name="Coin61" parent="Coins" instance=ExtResource("2")]
+position = Vector2(1122, 644)
+
+[node name="Coin62" parent="Coins" instance=ExtResource("2")]
+position = Vector2(1122, 634)
+
+[node name="Coin63" parent="Coins" instance=ExtResource("2")]
+position = Vector2(1122, 624)
+
+[node name="Coin64" parent="Coins" instance=ExtResource("2")]
+position = Vector2(1112, 624)
+
+[node name="Coin65" parent="Coins" instance=ExtResource("2")]
+position = Vector2(1102, 624)
+
+[node name="Coin66" parent="Coins" instance=ExtResource("2")]
+position = Vector2(1083, 624)
+
+[node name="Coin67" parent="Coins" instance=ExtResource("2")]
+position = Vector2(1073, 624)
+
+[node name="Coin68" parent="Coins" instance=ExtResource("2")]
+position = Vector2(1063, 624)
+
+[node name="Coin69" parent="Coins" instance=ExtResource("2")]
+position = Vector2(1063, 634)
+
+[node name="Coin70" parent="Coins" instance=ExtResource("2")]
+position = Vector2(1122, 664)
+
+[node name="Coin71" parent="Coins" instance=ExtResource("2")]
+position = Vector2(2139, 312)
+
+[node name="Coin72" parent="Coins" instance=ExtResource("2")]
+position = Vector2(2129, 312)
+
+[node name="Coin73" parent="Coins" instance=ExtResource("2")]
+position = Vector2(2129, 302)
+
+[node name="Coin74" parent="Coins" instance=ExtResource("2")]
+position = Vector2(2129, 292)
+
+[node name="Coin75" parent="Coins" instance=ExtResource("2")]
+position = Vector2(2139, 292)
+
+[node name="Coin76" parent="Coins" instance=ExtResource("2")]
+position = Vector2(2149, 292)
+
+[node name="Coin77" parent="Coins" instance=ExtResource("2")]
+position = Vector2(2149, 282)
+
+[node name="Coin78" parent="Coins" instance=ExtResource("2")]
+position = Vector2(2149, 272)
+
+[node name="Coin79" parent="Coins" instance=ExtResource("2")]
+position = Vector2(2139, 272)
+
+[node name="Coin80" parent="Coins" instance=ExtResource("2")]
+position = Vector2(2129, 272)
+
+[node name="Coin81" parent="Coins" instance=ExtResource("2")]
+position = Vector2(2149, 312)
 
 [node name="Props" type="Node2D" parent="."]
 
@@ -282,10 +405,18 @@ libraries = {
 autoplay = "move"
 
 [node name="Seesaw" parent="Props" instance=ExtResource("4")]
-position = Vector2(1201.4, 424.76)
+position = Vector2(1260, 424)
 
 [node name="OneWayPlatform" parent="Props" groups=["pass_through"] instance=ExtResource("5")]
 position = Vector2(465, 560.405)
+
+[node name="MovingPlatform4" parent="Props" instance=ExtResource("3")]
+position = Vector2(1854, 325)
+
+[node name="S-250_1_8" type="Sprite2D" parent="Props"]
+position = Vector2(361, 410)
+scale = Vector2(0.276, 0.343972)
+texture = ExtResource("6_wlxh4")
 
 [node name="Player" parent="." instance=ExtResource("6_fauva")]
 position = Vector2(126, 501)
@@ -293,11 +424,11 @@ position = Vector2(126, 501)
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Enemy1" parent="Enemies" instance=ExtResource("7")]
-position = Vector2(417.332, 654.8)
+position = Vector2(420, 660)
 physics_material_override = SubResource("2")
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource("7")]
-position = Vector2(353.832, 612.525)
+position = Vector2(355, 627)
 physics_material_override = SubResource("3")
 
 [node name="Enemy3" parent="Enemies" instance=ExtResource("7")]
@@ -329,7 +460,7 @@ position = Vector2(1714.86, 270.432)
 physics_material_override = SubResource("10")
 
 [node name="Enemy10" parent="Enemies" instance=ExtResource("7")]
-position = Vector2(1773.1, 678.095)
+position = Vector2(1648, 687)
 physics_material_override = SubResource("11")
 
 [node name="Enemy11" parent="Enemies" instance=ExtResource("7")]
@@ -356,3 +487,120 @@ instructions."
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9")
 autoplay = true
+
+[node name="Atmosphere" type="Node2D" parent="." groups=["atmosphere"]]
+script = ExtResource("10_y8le4")
+dusk_color = Color(0.102167, 0.021837, 0.00277459, 1)
+autostart_cycle = false
+fog_density = 0.7
+vignette_size = 0.6
+
+[node name="Secrets" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Secrets" groups=["secret_spot"]]
+position = Vector2(383, 460)
+
+[node name="Marker2D2" type="Marker2D" parent="Secrets" groups=["secret_spot"]]
+position = Vector2(1449, 293)
+
+[node name="Marker2D6" type="Marker2D" parent="Secrets" groups=["secret_spot"]]
+position = Vector2(2175, 294)
+
+[node name="Marker2D7" type="Marker2D" parent="Secrets" groups=["secret_spot"]]
+position = Vector2(2066, 295)
+
+[node name="Marker2D3" type="Marker2D" parent="Secrets" groups=["secret_spot"]]
+position = Vector2(1874, 233)
+
+[node name="Marker2D4" type="Marker2D" parent="Secrets" groups=["secret_spot"]]
+position = Vector2(993, 355)
+
+[node name="Marker2D5" type="Marker2D" parent="Secrets" groups=["secret_spot"]]
+position = Vector2(922, 676)
+
+[node name="Marker2D8" type="Marker2D" parent="Secrets" groups=["secret_spot"]]
+position = Vector2(1112, 607)
+
+[node name="Marker2D9" type="Marker2D" parent="Secrets" groups=["secret_spot"]]
+position = Vector2(1073, 609)
+
+[node name="Photo2026-04-3004-48-51" type="Sprite2D" parent="Secrets"]
+z_index = -15
+position = Vector2(124.297, 464.836)
+scale = Vector2(0.0966448, 0.173654)
+texture = ExtResource("12_nu3d5")
+
+[node name="Decor" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Decor"]
+offset_left = 1843.43
+offset_top = 615.0
+offset_right = 1854.43
+offset_bottom = 669.0
+rotation = 0.270526
+color = Color(0.164706, 0.164706, 0.270588, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Decor"]
+offset_left = 1881.43
+offset_top = 613.0
+offset_right = 1914.43
+offset_bottom = 667.0
+color = Color(0.164706, 0.164706, 0.270588, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="Decor"]
+offset_left = 2045.0
+offset_top = 353.0
+offset_right = 2196.0
+offset_bottom = 365.0
+color = Color(0.101961, 0.101961, 0.180392, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="Decor/ColorRect6"]
+position = Vector2(76, -9)
+color = Color(1, 0.701961, 0.278431, 1)
+energy = 2.87
+
+[node name="ColorRect3" type="ColorRect" parent="Decor"]
+offset_left = 1849.43
+offset_top = 618.0
+offset_right = 1860.43
+offset_bottom = 672.0
+rotation = -0.270526
+color = Color(0.164706, 0.164706, 0.270588, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="Decor"]
+offset_left = 1960.0
+offset_top = 616.0
+offset_right = 1971.0
+offset_bottom = 670.0
+rotation = 0.631809
+color = Color(0.164706, 0.164706, 0.270588, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="Decor"]
+offset_left = 1935.0
+offset_top = 615.0
+offset_right = 1946.0
+offset_bottom = 669.0
+rotation = -0.404916
+color = Color(0.164706, 0.164706, 0.270588, 1)
+
+[node name="OsbRight" type="Sprite2D" parent="."]
+position = Vector2(317, 454)
+rotation = -1.00182
+scale = Vector2(0.484375, 0.515625)
+texture = ExtResource("13_b0xa5")
+
+[node name="OsbRight2" type="Sprite2D" parent="."]
+position = Vector2(415, 455)
+rotation = -2.39285
+scale = Vector2(0.5625, 0.640625)
+texture = ExtResource("13_b0xa5")
+
+[node name="OsbJump" type="Sprite2D" parent="."]
+position = Vector2(1091, 575)
+rotation = 3.14159
+texture = ExtResource("14_rmrue")
+
+[node name="OsbJump2" type="Sprite2D" parent="."]
+position = Vector2(2120, 223)
+rotation = 3.14159
+texture = ExtResource("14_rmrue")
