@@ -19,6 +19,7 @@ var siding_left := false
 var jumping := false
 var stopping_jump := false
 var shooting := false
+var jumps_made := 0
 
 var floor_h_velocity: float = 0.0
 
@@ -46,6 +47,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	var jump := Input.is_action_pressed(&"jump")
 	var shoot := Input.is_action_pressed(&"shoot")
 	var spawn := Input.is_action_just_pressed(&"spawn")
+	var move_down := Input.is_action_pressed(&"move_down")
 
 	if spawn:
 		_spawn_enemy_above.call_deferred()
@@ -74,6 +76,8 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 
 	if found_floor:
 		airborne_time = 0.0
+		jumps_made = 0
+		jumping = false
 	else:
 		airborne_time += step # Time it spent in the air.
 
@@ -81,10 +85,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 
 	# Process jump.
 	if jumping:
-		if velocity.y > 0:
-			# Set off the jumping flag if going down.
-			jumping = false
-		elif not jump:
+		if not jump:
 			stopping_jump = true
 
 		if stopping_jump:
@@ -92,6 +93,23 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 
 	if on_floor:
 		# Process logic when character is on floor.
+		if move_down:
+			sprite.scale.y = 0.5
+			velocity.x *= 0.5
+			
+			if jump:
+				for contact_index in state.get_contact_count():
+					var collider = state.get_contact_collider_object(contact_index)
+
+					if collider:
+						if collider.is_in_group("pass_through"):
+							add_collision_exception_with(collider)
+							await get_tree().create_timer(0.3).timeout
+							remove_collision_exception_with(collider)
+
+		else:
+			sprite.scale.y = 1.0
+		
 		if move_left and not move_right:
 			if velocity.x > -WALK_MAX_VELOCITY:
 				velocity.x -= WALK_ACCEL * step
@@ -106,8 +124,19 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 			velocity.x = signf(velocity.x) * xv
 
 		# Check jump.
-		if not jumping and jump:
-			velocity.y = -JUMP_VELOCITY
+		var jump_pressed := Input.is_action_just_pressed(&"jump")
+		
+		if jump_pressed and not move_down and (on_floor or jumps_made < 2):
+			if not on_floor:
+				velocity.y = -JUMP_VELOCITY * 2
+				
+				state.set_linear_velocity(Vector2(velocity.x, velocity.y))
+				
+				if sprite_smoke: sprite_smoke.restart()
+			else:
+				velocity.y = -JUMP_VELOCITY
+			
+			jumps_made += 1
 			jumping = true
 			stopping_jump = false
 			sound_jump.play()
@@ -120,11 +149,15 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		if jumping:
 			new_anim = "jumping"
 		elif absf(velocity.x) < 0.1:
+			if move_down:
+				new_anim = "crouch"
 			if shoot_time < MAX_SHOOT_POSE_TIME:
 				new_anim = "idle_weapon"
 			else:
 				new_anim = "idle"
 		else:
+			if move_down:
+				new_anim = "crouch" 
 			if shoot_time < MAX_SHOOT_POSE_TIME:
 				new_anim = "run_weapon"
 			else:
