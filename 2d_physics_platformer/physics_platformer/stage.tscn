@@ -284,7 +284,7 @@ autoplay = "move"
 [node name="Seesaw" parent="Props" instance=ExtResource("4")]
 position = Vector2(1201.4, 424.76)
 
-[node name="OneWayPlatform" parent="Props" instance=ExtResource("5")]
+[node name="OneWayPlatform" parent="Props" groups=["pass_through"] instance=ExtResource("5")]
 position = Vector2(465, 560.405)
 
 [node name="Player" parent="." instance=ExtResource("6_fauva")]
