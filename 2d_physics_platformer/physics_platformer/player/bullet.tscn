@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dlfwkokoudcwv"]
+[gd_scene load_steps=8 format=3 uid="uid://dlfwkokoudcwv"]
 
 [ext_resource type="Script" path="res://player/bullet.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://7sv64orewgmb" path="res://player/bullet.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://cm7f1sb1kh7rm" path="res://player/photo_2026-04-30_07-16-23.jpg" id="3_jx5g5"]
 
 [sub_resource type="CanvasItemMaterial" id="1"]
 blend_mode = 1
@@ -69,7 +70,7 @@ spread = 0.0
 gravity = Vector2(0, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2")
+texture = ExtResource("3_jx5g5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("2")
